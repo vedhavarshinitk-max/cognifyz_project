@@ -1,0 +1,105 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class TaskManager {
+   static ArrayList<String> tasks = new ArrayList();
+   static Scanner sc;
+
+   public TaskManager() {
+   }
+
+   public static void main(String[] var0) {
+      int var1;
+      do {
+         System.out.println("\n=============================");
+         System.out.println("        TASK MANAGER         ");
+         System.out.println("=============================");
+         System.out.println("1. Add Task");
+         System.out.println("2. View Tasks");
+         System.out.println("3. Update Task");
+         System.out.println("4. Delete Task");
+         System.out.println("5. Exit");
+         System.out.print("Enter your choice: ");
+         var1 = sc.nextInt();
+         sc.nextLine();
+         switch (var1) {
+            case 1:
+               addTask();
+               break;
+            case 2:
+               viewTasks();
+               break;
+            case 3:
+               updateTask();
+               break;
+            case 4:
+               deleteTask();
+               break;
+            case 5:
+               System.out.println("Exiting... Goodbye!");
+               break;
+            default:
+               System.out.println("Invalid choice!");
+         }
+      } while(var1 != 5);
+
+      sc.close();
+   }
+
+   static void addTask() {
+      System.out.print("Enter new task: ");
+      String var0 = sc.nextLine();
+      tasks.add(var0);
+      System.out.println("Task added successfully!");
+   }
+
+   static void viewTasks() {
+      if (tasks.isEmpty()) {
+         System.out.println("No tasks available.");
+      } else {
+         System.out.println("\nYour Tasks:");
+
+         for(int var0 = 0; var0 < tasks.size(); ++var0) {
+            System.out.println(var0 + 1 + ". " + (String)tasks.get(var0));
+         }
+
+      }
+   }
+
+   static void updateTask() {
+      viewTasks();
+      if (!tasks.isEmpty()) {
+         System.out.print("Enter task number to update: ");
+         int var0 = sc.nextInt() - 1;
+         sc.nextLine();
+         if (var0 >= 0 && var0 < tasks.size()) {
+            System.out.print("Enter updated task: ");
+            String var1 = sc.nextLine();
+            tasks.set(var0, var1);
+            System.out.println("Task updated successfully!");
+         } else {
+            System.out.println("Invalid task number.");
+         }
+
+      }
+   }
+
+   static void deleteTask() {
+      viewTasks();
+      if (!tasks.isEmpty()) {
+         System.out.print("Enter task number to delete: ");
+         int var0 = sc.nextInt() - 1;
+         if (var0 >= 0 && var0 < tasks.size()) {
+            tasks.remove(var0);
+            System.out.println("Task deleted successfully!");
+         } else {
+            System.out.println("Invalid task number.");
+         }
+
+      }
+   }
+
+   static {
+      sc = new Scanner(System.in);
+   }
+}
