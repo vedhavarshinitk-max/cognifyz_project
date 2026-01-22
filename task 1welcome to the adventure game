@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class GuessingGame {
+   public GuessingGame() {
+   }
+
+   public static void main(String[] var0) {
+      Scanner var1 = new Scanner(System.in);
+      System.out.println("====================================");
+      System.out.println("     WELCOME TO THE ADVENTURE GAME   ");
+      System.out.println("====================================\n");
+      System.out.println("You are standing at a crossroads.");
+      System.out.println("1. Go into the forest");
+      System.out.println("2. Enter the cave");
+      System.out.print("Enter your choice (1 or 2): ");
+      int var2 = var1.nextInt();
+      if (var2 == 1) {
+         System.out.println("\nYou walk into the forest.");
+         System.out.println("You found a treasure chest!");
+         System.out.println("ðŸŽ‰ YOU WIN ðŸŽ‰");
+      } else if (var2 == 2) {
+         System.out.println("\nYou enter the dark cave.");
+         System.out.println("A monster appears!");
+         System.out.println("ðŸ’€ GAME OVER ðŸ’€");
+      } else {
+         System.out.println("\nInvalid choice. Restart the game.");
+      }
+
+      System.out.println("\nThanks for playing!");
+      var1.close();
+   }
+}
